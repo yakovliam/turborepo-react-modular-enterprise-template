@@ -1,0 +1,24 @@
+{
+  "name": "@repo/module-2",
+  "version": "0.0.0",
+  "exports": {
+    "./submodule1/SM1T1Page": "./src/submodule1/SM1T1Page.tsx",
+    "./submodule1/SM1T2Page": "./src/submodule1/SM1T2Page.tsx"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint \"**/*.ts\""
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "^8.57.0",
+    "typescript": "5.5.4"
+  }
+}
