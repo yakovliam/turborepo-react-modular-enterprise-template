@@ -1,14 +1,27 @@
-# Turborepo starter
+# Turborepo React Bun Modular Enterprise Template
 
-This Turborepo starter is maintained by the Turborepo core team.
+This starter template is a turborepo monorepo with an enterprise modular layout; all set up with Bun.
 
-## Using this example
+**Layout breakdown:** This enterprise app is composed of a set of modules, each of which denoted by a label. Each of said modules contains a set of submodules, denoted by a label. Each submodule contains a set of tabs, denoted by label, and contains a component/content.
 
-Run the following command:
+Here's an example complex app structure that can take advantage of this template:
 
-```sh
-npx create-turbo@latest
-```
+- Module [Orders]:
+  - Submodule [Items]:
+    - Tab [Metadata]
+    - Tab [Criteria]
+    - Tab [Pricing]
+  - Submodule [History]:
+    - Tab [Graph View]
+    - Tab [Extrapolation]
+    - Tab [Caluclations]
+- Module [User Management]:
+  - Submodule [Security]
+    - Tab [Passwords]
+    - Tab [Audit Log]
+    - Tab [Security Dashboard]
+  - Submodule [Linking]:
+    - Tab (INDEX) [External Links]
 
 ## What's inside?
 
@@ -16,11 +29,14 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `web`: a React app
+- `@repo/ui`: a stub React component library shared by `web`. You can define component-specific files for components sitting in this library only.
+- `@repo/tailwind-config`: `tailwind` configuration, shared by any libraries that need the globally defined styles.
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo.
+- `@repo/module-1`: The first module in the modular layout.
+- `@repo/module-2`: The second module in the modular layout.
+- `@repo/libs`: The single source of truth for routing, module configuration, types, and hooks.
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -41,11 +57,6 @@ cd my-turborepo
 
 # With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
 turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
 ```
 
 You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
@@ -55,9 +66,7 @@ You can build a specific package by using a [filter](https://turborepo.com/docs/
 turbo build --filter=docs
 
 # Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+bun run build --filter=web
 ```
 
 ### Develop
@@ -86,41 +95,6 @@ turbo dev --filter=web
 npx turbo dev --filter=web
 yarn exec turbo dev --filter=web
 pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
 ```
 
 ## Useful Links
